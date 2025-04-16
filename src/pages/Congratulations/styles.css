@@ -1,0 +1,10 @@
+.congratulations {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.congratulations img {
+  width: 100%;
+}

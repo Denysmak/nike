@@ -1,0 +1,137 @@
+.containerTotal{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+.containerBox{
+    padding: 0 10%;
+    flex:1;
+    display: grid;
+    gap: 10px;
+    padding: 20px;
+    justify-items: center;
+}
+.notificacaoContainer{
+    display: none;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    
+
+    background-color: rgba(128, 128, 128, 0.5);
+}
+.notificacaoContainerPrimeira{
+    display: block;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+
+    background-color: rgba(128, 128, 128, 0.5);
+}
+.notificacaoFaltaContainer{
+    display: none;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(128, 128, 128, 0.5);
+}
+.notificacaoFalta{
+    padding-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    height: 200px;
+    border-radius: 15px;
+    max-width: 500px;
+    background-color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    padding: 0 5%;
+}
+
+
+
+.notificacao{
+
+    padding: 30px 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+    height: 500px;
+    border-radius: 15px;
+    max-width: 500px;
+    background-color: white;
+    position: absolute;
+    
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+.notificacao img{
+    width: 200px;
+}
+.botaoOk{
+    border-radius: 15px;
+    background-color: rgb(32, 97, 218);
+    height: 50px;
+    width: 40%;
+    color: white;
+    margin-top: 30px;
+}
+.botaoOk:active{
+    background-color: rgb(5, 71, 194);
+}
+
+
+.telaCarregamentoContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    height: 100vh;
+    width: 100%;
+    background-color: white;
+}
+
+
+.loader {
+    border: 8px solid #f3f3f3;      /* Cor de fundo clara */
+    border-top: 8px solid #000000;   /* Cor da borda que gira */
+    border-radius: 50%;             /* Torna o elemento circular */
+    width: 60px;
+    height: 60px;
+    animation: spin 1s linear infinite; /* Animação de rotação */
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+
+@media (min-width: 800px) {
+    .containerBox {
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(2, auto);
+    }
+    .notificacao{
+        padding-bottom: 50px;
+    }
+}
+
+/* Layout menor (2 colunas, 3 linhas) */
+@media (max-width: 799px) {
+    .containerBox {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(3, auto);
+        
+   
+    }
+}

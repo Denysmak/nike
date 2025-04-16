@@ -1,0 +1,396 @@
+.circles-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-top: 5%;
+    margin-bottom: 10%;
+  }
+  .telaCarregamentoContainer {
+    width: 100vw;
+    height: 100vh;
+    z-index: 9999;
+    background-color: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .botones-tallar{
+    border: 2px solid red;
+    display: flex;
+    width: 50%;
+  }
+  .tallas-wrapper button{
+    background-color: white;
+    border: 1px solid black;
+    color: black;
+    
+  }
+  .botton-talla:hover{
+    background-color: red!important;
+    color: white;
+  }
+ 
+  .boton-talla:focus {
+    outline: none; /* remove o azul quando clicado */
+    color: white;
+  }
+  .loader {
+    width: 50px;
+    height: 50px;
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid #000000;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
+  .circle {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    position: relative;
+    font-size: 2rem;
+  }
+  
+  .containerCircleText {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin-bottom: 5%;
+  }
+  .imagemValor{
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    max-width: 650px;
+    margin: auto;
+  }
+  .imagemValor img{
+    width: 200px;
+  }
+  .containerTexto{
+    font-weight: bold;
+    font-size: 1.6rem;
+  }
+  .valor{
+    color: red;
+    margin-top: 5px;
+  }
+  .valor span{
+    text-decoration: line-through;
+    color: black;
+  }
+
+  
+  .containerCircleText p {
+    position: absolute;
+    top: 55px;
+    color: black;
+    margin: 0;
+    z-index: 1;  /* Garante que o texto fique acima de outros elementos */
+    font-size: 1.2rem;
+}
+  .line {
+    width: 180px;
+    height: 15px;
+    background-color: #333;
+    position: relative;
+  }
+  
+  .linha2 {
+    background-color: rgb(216, 216, 216);
+  }
+  
+  #circle3 {
+
+    background-color: rgb(216, 216, 216);
+    color: #868585;
+  }
+  .detalhesPedido{
+
+    width: 90%;
+    margin: auto;
+    max-width: 650px;
+  }
+  .textoEspacado{
+
+    display: flex;
+    justify-content: space-between;
+}
+.textoBold{
+    font-weight: bold;
+}
+.textoBold :nth-child(2){
+    color: red;
+}
+
+/* Estilos gerais */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+  }
+  
+  /* Container dos círculos */
+  .circles-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 0 20px;
+  }
+  
+  .containerCircleText {
+    text-align: center;
+  }
+  
+  .circle {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #007bff;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    margin: 0 auto 10px;
+  }
+  
+  .line {
+    flex-grow: 1;
+    height: 2px;
+    background-color: rgb(53, 52, 52);
+    margin: 0 10px;
+  }
+  
+  .linha2 {
+    background-color: #ccc; /* Linha mais clara para o segundo passo */
+  }
+  
+  /* Estilos da imagem e valor */
+  .imagemValor {
+    display: flex;
+    align-items: center;
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 0 20px;
+  }
+  
+  .imagemValor img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    margin-right: 20px;
+  }
+  
+  .containerTexto {
+    flex-grow: 1;
+  }
+  
+  .containerTexto p {
+    margin: 5px 0;
+  }
+  
+  .valor {
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
+  .valor span {
+    text-decoration: line-through;
+    color: #888;
+  }
+  
+  /* Estilos dos detalhes do pedido */
+  .detalhesPedido {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .detalhesPedido h3 {
+    margin-top: 0;
+  }
+  
+  .textoEspacado {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0;
+  }
+  
+  .textoBold {
+    font-weight: bold;
+  }
+  
+  /* Estilos do formulário */
+  form {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  form div {
+    margin-bottom: 15px;
+  }
+  
+  form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  form input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+  }
+  
+  form button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  form button:hover {
+    background-color: #0056b3;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+  @media (max-width: 1200px){
+    .circles-container {
+        margin-bottom: 8%;
+      }
+  }
+  @media (max-width: 900px){
+    .imagemValor{
+
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        width: 65%;
+        min-width: 350px;
+      }
+      .imagemValor img{
+        width: 100px;
+      }
+      .containerTexto{
+        font-weight: bold;
+        font-size: 1.3rem;
+      }
+      .valor{
+        color: red;
+        margin-top: 5px;
+      }
+    .containerCircleText p {
+        position: absolute;
+        top: 55px;
+        color: black;
+        margin: 0;
+        z-index: 1;  /* Garante que o texto fique acima de outros elementos */
+        font-size: 1rem;
+    }
+      .line {
+        width: 120px;
+        height: 5px;
+        background-color: #333;
+        position: relative;
+      }
+      .circle {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+    
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        position: relative;
+        font-size: 1.5rem;
+      }
+      .circles-container {
+        margin-bottom: 50px;
+      }
+      
+
+  .linha2 {
+    background-color: rgb(216, 216, 216);
+  }
+  
+      
+      
+  }
+  @media (max-width: 500px){
+    .circles-container {
+      margin-bottom: 35px;
+      width: 65%;
+    }
+    .circles-container p{
+      font-size: 0.9rem;
+    }
+    .imagemValor{
+      width: 50%;
+      min-width: 300px;
+    }
+    .imagemValor img{
+      width: 80px;
+      height: 80px;
+    }
+    .containerTexto{
+      color: blue;
+      font-size: 1rem;
+    }
+      .circle {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        position: relative;
+        font-size: 1.2rem;
+      }
+  }
