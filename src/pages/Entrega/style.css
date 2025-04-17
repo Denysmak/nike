@@ -1,3 +1,94 @@
+.botones-talla-doble-columna {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+/* Mantemos todos os outros estilos como estavam */
+.botones-talla {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+  gap: 8px;
+}
+
+.tallas-wrapper {
+  margin-bottom: 20px;
+}
+
+.tallas-wrapper label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+  font-size: 14px;
+  color: #333;
+}
+
+.boton-talla {
+  padding: 10px;
+  border: 1px solid #ddd;
+  background-color: #f8f8f8;
+  cursor: pointer;
+  border-radius: 4px;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.boton-talla:hover {
+  background-color: #e8e8e8;
+}
+
+.boton-talla.seleccionado {
+  background-color: #000;
+  color: #fff;
+  border-color: #000;
+}
+
+.boton-talla.no-disponible {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.tallas-wrapper {
+  margin-bottom: 20px;
+}
+
+.tallas-wrapper label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+  font-size: 14px;
+  color: #333;
+}
+
+.botones-talla {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+  gap: 8px;
+}
+
+.boton-talla {
+  padding: 10px;
+  border: 1px solid #ddd;
+  background-color: #f8f8f8;
+  cursor: pointer;
+  border-radius: 4px;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.boton-talla:hover {
+  background-color: #e8e8e8;
+}
+
+.boton-talla.seleccionado {
+  background-color: #000;
+  color: #fff;
+  border-color: #000;
+}
+
+.boton-talla.no-disponible {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
 .circles-container {
     display: flex;
     align-items: center;

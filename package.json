@@ -1,7 +1,7 @@
 {
   "name": "landing-page",
   "version": "0.1.0",
-  "homepage": "https://centraldecontenido.online/jdsyws/",
+  "homepage": "/jdsyws",
   "private": true,
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.7.2",

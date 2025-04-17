@@ -18,7 +18,8 @@ export default function Entrega() {
   const [ciudad, setCiudad] = useState('');
   const [height, setHeight] = useState(window.innerHeight);
   const [tallaSeleccionada, setTallaSeleccionada] = useState('');
-
+  const [tallaSeleccionada1, setTallaSeleccionada1] = useState(null);
+  const [tallaSeleccionada2, setTallaSeleccionada2] = useState(null);
 
   const tamanhos = [
     { label: "CM 24 (US 6)", valor: 24, disponivel: true },
@@ -41,20 +42,28 @@ export default function Entrega() {
   
 
   const handleClick = () => {
-    // Verifica se os campos obrigatórios estão preenchidos
-    if (!direccion || !codigoPostal || !ciudad) {
-      setError('Por favor, completa todos los campos obligatorios.'); // Mensagem de erro em espanhol
-      return; // Impede o redirecionamento
+    // verifica primeira seleção
+    if (!tallaSeleccionada1) {
+      setError('Es obligatorio seleccionar tu talla en la primera sección.');
+      return;
     }
-  
-    // Inicia o loading
-    setIsLoading(true);
-  
-    // Simula um tempo de carregamento antes de redirecionar
-    setTimeout(() => {
-      redirectWithUTM("https://centraldecontenido.online/cwuns/"); // Redireciona para o link externo
-    }, 3000); // 3 segundos de simulação de carregamento
+    // verifica segunda seleção
+    if (!tallaSeleccionada) {
+      setError('Es obligatorio seleccionar tu talla de ropa.');
+      return;
+    }
+    // (Opcional) você pode também validar campos de texto aqui
+    // se quiser forçar o required customizado, por ex:
+    if (!direccion || !codigoPostal || !ciudad) {
+      setError('Por favor, completa todos los campos requeridos.');
+      return;
+    }
+
+    // tudo OK → limpa erro e redireciona
+    setError('');
+    navigate('/congratulations');
   };
+
 
   const startLoading = (callback) => {
     setIsLoading(true); // Ativa o loading
@@ -114,98 +123,99 @@ export default function Entrega() {
           <p>$ 4.90</p>
         </div>
       </div>
-
       <form>
-      <div>
-      <h3>Selecciona tu talla</h3>
-
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "8px" }}>
-        {tamanhos.map((tamanho, index) => (
-          <button
-            key={index}
-            disabled={!tamanho.disponivel}
-            style={{
-              padding: "10px",
-              cursor: tamanho.disponivel ? "pointer" : "not-allowed",
-              opacity: tamanho.disponivel ? 1 : 0.5,
-            }}
-          >
-            {tamanho.label}
-          </button>
-        ))}
-      </div>
-    </div>
-     
+      {/* … sua primeira tallas-wrapper … */}
       <div className="tallas-wrapper">
-  <label>Seleccione su talla de ropa</label>
-  <div className="botones-talla">
-    {['XS', 'S', 'M', 'L', 'XL', 'XXL'].map((talla) => (
-      <button
-        type="button"
-        key={talla}
-        className={`boton-talla ${tallaSeleccionada === talla ? 'seleccionado' : ''}`}
-        onClick={() => setTallaSeleccionada(talla)}
-      >
-        {talla}
+        <label>Selecciona tu talla</label>
+        <div className="botones-talla-doble-columna">
+          {tamanhos.map((tamanho, idx) => (
+            <button
+              type="button"
+              key={idx}
+              disabled={!tamanho.disponivel}
+              className={`boton-talla ${tallaSeleccionada1 === tamanho.label ? 'seleccionado' : ''}`}
+              onClick={() => {
+                setTallaSeleccionada1(tamanho.label);
+                setError(''); // limpa erro assim que o usuário corrige
+              }}
+            >
+              {tamanho.label}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {/* … sua segunda tallas-wrapper … */}
+      <div className="tallas-wrapper">
+        <label>Seleccione su talla de ropa</label>
+        <div className="botones-talla">
+          {['XS','S','M','L','XL','XXL'].map(talla => (
+            <button
+              type="button"
+              key={talla}
+              className={`boton-talla ${tallaSeleccionada === talla ? 'seleccionado' : ''}`}
+              onClick={() => {
+                setTallaSeleccionada(talla);
+                setError('');
+              }}
+            >
+              {talla}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {/* … demais campos … */}
+      <div>
+        <label htmlFor="direccion">Dirección</label>
+        <input
+          type="text"
+          id="direccion"
+          placeholder="Calle y número"
+          value={direccion}
+          onChange={e => setDireccion(e.target.value)}
+        />
+      </div>
+
+      <div>
+        <label htmlFor="apto">Apto, piso, casa, etc. (Opcional)</label>
+        <input
+          type="text"
+          id="apto"
+          placeholder="Apartamento, piso, etc"
+          value={apto}
+          onChange={e => setApto(e.target.value)}
+        />
+      </div>
+
+      <div>
+        <label htmlFor="codigoPostal">Código postal</label>
+        <input
+          type="text"
+          id="codigoPostal"
+          placeholder="Introduce aquí tu Código Postal"
+          value={codigoPostal}
+          onChange={e => setCodigoPostal(e.target.value)}
+        />
+      </div>
+
+      <div>
+        <label htmlFor="ciudad">Ciudad</label>
+        <input
+          type="text"
+          id="ciudad"
+          placeholder="¿Dónde vives?"
+          value={ciudad}
+          onChange={e => setCiudad(e.target.value)}
+        />
+      </div>
+
+      {error && <p className="error-message">{error}</p>}
+
+      <button type="button" onClick={handleClick}>
+        Proceder al pago
       </button>
-    ))}
-  </div>
-</div>
-        <div>
-          <label htmlFor="direccion">Dirección</label>
-          <input
-            type="text"
-            id="direccion"
-            placeholder="Calle y número"
-            value={direccion}
-            onChange={(e) => setDireccion(e.target.value)}
-            required
-          />
-        </div>
-
-        <div>
-          <label htmlFor="apto">Apto, piso, casa, etc. (Opcional)</label>
-          <input
-            type="text"
-            id="apto"
-            placeholder="Apartamento, piso, etc"
-            value={apto}
-            onChange={(e) => setApto(e.target.value)}
-          />
-        </div>
-
-        <div>
-          <label htmlFor="codigoPostal">Código postal (C.P)</label>
-          <input
-            type="text"
-            id="codigoPostal"
-            placeholder="Introduce aquí tu Código Postal"
-            value={codigoPostal}
-            onChange={(e) => setCodigoPostal(e.target.value)}
-            required
-          />
-        </div>
-
-        <div>
-          <label htmlFor="ciudad">Ciudad</label>
-          <input
-            type="text"
-            id="ciudad"
-            placeholder="¿Dónde vives?"
-            value={ciudad}
-            onChange={(e) => setCiudad(e.target.value)}
-            required
-          />
-        </div>
-
-        {/* Exibe a mensagem de erro se houver */}
-        {error && <p className="error-message">{error}</p>}
-
-        {/* Botão que redireciona */}
-        <button type="button" onClick={handleClick}>
-          Proceder al pago
-        </button>
-      </form>
+    </form>
 
       {/* Tela de carregamento */}
       <div className='telaCarregamentoContainer' style={{ display: isLoading ? 'flex' : 'none', height: height }}>

@@ -1,10 +1,10 @@
 export const redirectWithUTM = (externalUrl) => {
-    // Recupera os parâmetros UTM salvos no sessionStorage
-    const savedUTM = sessionStorage.getItem("utm_params");
+  const savedUTM = sessionStorage.getItem("utm_params");
+  const finalUrl = savedUTM ? `${externalUrl}${savedUTM}` : externalUrl;
+
+  // 1. Adiciona uma rota fictícia ao histórico (como "/exit-redirect")
+  window.history.pushState({}, '', '/exit-redirect');
   
-    // Constrói a URL final com os parâmetros UTM
-    const finalUrl = savedUTM ? `${externalUrl}${savedUTM}` : externalUrl;
-  
-    // Redireciona para a URL externa
-    window.location.href = finalUrl;
+  // 2. Redireciona substituindo a rota fictícia (não afeta o histórico da sua app)
+  window.location.replace(finalUrl);
   };
